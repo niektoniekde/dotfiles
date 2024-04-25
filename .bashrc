@@ -97,6 +97,8 @@ else
     PS1="${e_style['bg_white']}${e_style['fg_black']} \H "
     PS1="${PS1}${UID_PS1_COLOR}${e_style['fg_white']}${e_style['fg_black']} \u ${e_style['fg_bblack']}${e_style['reverse']}${e_style['reset_all']}"             
     PS1="${PS1}${e_style['bg_bblack']}${e_style['fg_white']} \w ${e_style['reset_all']}${e_style['fg_bblack']}${e_style['reset_all']} \\$ ${e_style['reset_all']}"
+    export PS1
   fi
-
+  
+  export USER_BASHRC="SOURCED"
 fi
