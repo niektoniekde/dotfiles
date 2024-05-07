@@ -28,6 +28,14 @@ else
 
   export EDITOR
 
+  # fix missing locales if apply
+  if [[ -z $LC_CTYPE ]]; then          export LC_CTYPE=en_US.UTF-8; fi
+  if [[ -z $LC_ALL ]]; then            export LC_ALL=en_US.UTF-8; fi
+  if [[ -z $LC_LANG ]]; then           export LC_LANG=en_US.UTF-8; fi
+  if [[ -z $LC_NUMERIC ]]; then        export LC_NUMERIC=sk_SK.UTF-8; fi
+  if [[ -z $LC_MEASUREMENT ]]; then    export LC_MEASUREMENT=sk_SK.UTF-8; fi
+  if [[ -z $LC_TIME ]]; then           export LC_TIME=sk_SK.UTF-8; fi
+  
   # export USER's PATH
   if [[ -f ${HOME}/.bash_paths ]]; then
     . "${HOME}/.bash_paths"
