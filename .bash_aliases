@@ -1,3 +1,5 @@
+alias proxyenv-unset="unset {http,https,no}_proxy; unset {HTTP,HTTPS,NO}_PROXY;"
+
 # make alias for k8s configs
 K8S_CONFD="${HOME}/.kube/conf.d"
 if [[ -d ${K8S_CONFD} ]]; then
