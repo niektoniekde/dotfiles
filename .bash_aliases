@@ -3,10 +3,7 @@ alias proxyenv-unset="unset {http,https,no}_proxy; unset {HTTP,HTTPS,NO}_PROXY;"
 # make alias for k8s configs
 K8S_CONFD="${HOME}/.kube/conf.d"
 if [[ -d ${K8S_CONFD} ]]; then
-  IFS=$'\n'
-
-  for K8S_CONF in $(ls ${K8S_CONFD}); do
-    IFS=' '
+  while read -r K8S_CONF; do
     HELM_BIN=""
     KUBE_BIN=""
     CALI_PLG=""
@@ -15,22 +12,22 @@ if [[ -d ${K8S_CONFD} ]]; then
       if [[ -f ${K8S_CONFD}/${K8S_CONF}/config ]]; then
 
         if [[ -f ${K8S_CONFD}/${K8S_CONF}/path.env ]]; then
-          . ${K8S_CONFD}/${K8S_CONF}/path.env;
+          . ${K8S_CONFD}/${K8S_CONF}/path.env
         fi
 
         if [[ -n ${KUBE_BIN} ]]; then
-          alias "${K8S_CONF}__k"="KUBECONFIG='${K8S_CONFD}/${K8S_CONF}/config' ${KUBE_BIN}"
+          alias "${K8S_CONF}__k=KUBECONFIG=${K8S_CONFD}/${K8S_CONF}/config ${KUBE_BIN}"
         fi
 
         if [[ -n ${HELM_BIN} ]]; then
-          alias "${K8S_CONF}__h"="KUBECONFIG='${K8S_CONFD}/${K8S_CONF}/config' ${HELM_BIN}"
+          alias "${K8S_CONF}__h=KUBECONFIG=${K8S_CONFD}/${K8S_CONF}/config ${HELM_BIN}"
         fi
 
         if [[ -n ${CALI_PLG} ]]; then
-          alias "${K8S_CONF}__c"="KUBECONFIG='${K8S_CONFD}/${K8S_CONF}/config' ${KUBE_BIN} calico"
+          alias "${K8S_CONF}__c=KUBECONFIG=${K8S_CONFD}/${K8S_CONF}/config ${KUBE_BIN} calico"
         fi
-      fi
 
+      fi
     fi
-  done
+  done < <(ls -1 ${K8S_CONFD} 2>/dev/null)
 fi
