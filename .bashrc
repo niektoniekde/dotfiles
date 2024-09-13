@@ -108,7 +108,7 @@ else
     export PS1
   fi
 
-  if [[ ! -z ${SSH_TTY} ]]; then
+  if [[ ! -z ${SSH_TTY} && -z ${TMUX} ]]; then
     printf '\033k%s\033\\' "ssh://${HOST%%.*}"
   fi
   
