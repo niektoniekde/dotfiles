@@ -9,8 +9,8 @@ set softtabstop=2
 set number
 
 " folding
-set foldmethod=indent
-set foldnestmax=3
+"set foldmethod=indent
+"set foldnestmax=3
 
 " wildmenu
 set wildmenu

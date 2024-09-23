@@ -1,8 +1,9 @@
 vim.cmd[[
 " normal mode - non-recursive - remaps
-nnoremap <Leader>b :buffer<Space><Tab>
-nnoremap <Leader>B :buffers<CR>:buffer<Space>
-nnoremap <Leader>t :NvimTreeToggle<CR>
+"nnoremap <Leader>b :buffer<Space><Tab>
+"nnoremap <Leader>B :buffers<CR>:buffer<Space>
+"nnoremap <Leader>t :NvimTreeToggle<CR>
+nnoremap <Leader>t :Neotree filesystem toggle left<CR>
 nnoremap <Leader>, :bp<CR>
 nnoremap <Leader>. :bn<CR>
 

@@ -1,5 +1,5 @@
 return require('packer').startup(function(use)
-  use { 'wbthomason/packer.nvim' }
+  use { 'wbthomason/packer.nvim', run = ':PackerSync' }
   use { 'nvim-lualine/lualine.nvim', requires = { 'nvim-tree/nvim-web-devicons', opt = true }}
   use({'nvim-tree/nvim-tree.lua', requires = { 'nvim-tree/nvim-web-devicons' }})
   use('mbbill/undotree')
@@ -8,7 +8,6 @@ return require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
-  use 'maxmx03/solarized.nvim'
   use ({
     'MeanderingProgrammer/render-markdown.nvim',
     after = { 'nvim-treesitter' },
@@ -21,6 +20,7 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use {'tpope/vim-fugitive'}
+  use 'maxmx03/solarized.nvim'
   use {
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v3.x',
