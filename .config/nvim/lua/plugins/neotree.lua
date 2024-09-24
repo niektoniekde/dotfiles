@@ -25,5 +25,6 @@ return {
         }
       }
     })
+  vim.keymap.set('n', '<Leader>t', ':Neotree reveal<CR>', {})
   end
 }
