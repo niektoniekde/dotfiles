@@ -8,6 +8,7 @@ return {
   },
   config = function()
     require("neo-tree").setup({
+      close_if_last_window = true,
       enable_git_status = true,
       enable_diagnostics = true,
       filesystem = {
@@ -16,6 +17,7 @@ return {
           hide_gitignored = false
         }
       },
+      use_libuv_file_watcher = true,
       window = {
         position = "left",
         width = 35,
@@ -26,5 +28,6 @@ return {
       }
     })
   vim.keymap.set('n', '<Leader>t', ':Neotree reveal<CR>', {})
+  vim.keymap.set('n', '<Leader>.', ':Neotree dir=./<CR>', {})
   end
 }
