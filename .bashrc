@@ -111,6 +111,10 @@ else
   if [[ ! -z ${SSH_TTY} && -z ${TMUX} ]]; then
     printf '\033k%s\033\\' "ssh://${HOST%%.*}"
   fi
+
+  if [[ -f ${HOME}/.bash_kubeconfig ]]; then
+    . "${HOME}/.bash_kubeconfig"
+  fi
   
   export USER_BASHRC="SOURCED"
 fi
