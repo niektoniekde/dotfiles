@@ -8,4 +8,9 @@ cnoremap <expr> <Up>    pumvisible() ? "\<Left>"  : "\<Up>"
 cnoremap <expr> <Down>  pumvisible() ? "\<Right>" : "\<Down>"
 cnoremap <expr> <Left>  pumvisible() ? "\<Up>"    : "\<Left>"
 cnoremap <expr> <Right> pumvisible() ? "\<Down>"  : "\<Right>"
+
+" delete all buffers except current one
+nnoremap <Leader>xo :1,.-bd\|.+,$bd<CR>
+" delete current buffer
+nnoremap <Leader>xc :bd<CR>
 ]]
