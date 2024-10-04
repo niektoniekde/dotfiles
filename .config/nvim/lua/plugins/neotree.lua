@@ -8,16 +8,14 @@ return {
   },
   config = function()
     require("neo-tree").setup({
-      close_if_last_window = true,
       enable_git_status = true,
-      enable_diagnostics = true,
       filesystem = {
         filtered_items = {
           hide_dotfiles = false,
           hide_gitignored = false
         }
       },
-      use_libuv_file_watcher = true,
+      use_libuv_file_watcher = false,
       window = {
         position = "left",
         width = 35,
