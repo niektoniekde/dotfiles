@@ -17,19 +17,6 @@ return {
         handlers = {
           function(server_name)
             require('lspconfig')[server_name].setup({ capabilities = capabilities })
-          end,
-          ["helm_ls"] = function ()
-            local lspconfig = require("lspconfig")
-            lspconfig.helm_ls.setup {
-            settings = {
-              ['helm-ls'] = {
-                yamlls = {
-                  enabled = true,
-                  path = "yaml-language-server"
-                }
-              }
-            }
-          }
           end
         }
       })
