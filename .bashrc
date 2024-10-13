@@ -23,7 +23,7 @@ else
   if [[ -x /usr/bin/nvim ]]; then
     EDITOR=nvim
   elif [[ -x /usr/bin/vim ]]; then
-    EDOTIR=vim
+    EDITOR=vim
   fi
 
   export EDITOR
@@ -42,6 +42,11 @@ else
   fi
 
   export PATH
+
+  # export HOST variable if empty
+  if [[ -z ${HOST} ]]; then
+    export HOST=$(</etc/hostname)
+  fi
 
   # very handy aliases / compatible with unix-like systems
   alias ll='ls -alhF'
