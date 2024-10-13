@@ -1,5 +1,10 @@
 # .bashrc
 
+# prevent multiple sourcing
+if [[ $USER_BASHRC == "SOURCED" ]]; then
+  return
+fi
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
