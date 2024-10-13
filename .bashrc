@@ -1,7 +1,7 @@
 # .bashrc
 
-# prevent multiple sourcing
-if [[ $USER_BASHRC == "SOURCED" ]]; then
+# prevent multiple sourcing for same user
+if [[ ${USER_BASHRC} == ${USER} || ${USER_BASHRC} == $(id -u) ]]; then
   return
 fi
 
@@ -126,5 +126,10 @@ else
     . "${HOME}/.bash_kubeconfig"
   fi
   
-  export USER_BASHRC="SOURCED"
+  if [[ -z ${USER} ]]; then
+    # switch to numeric if ${USER} is empty
+    export USER_BASHRC="$(id -u)"
+  else
+    export USER_BASHRC="${USER}"
+  fi
 fi
