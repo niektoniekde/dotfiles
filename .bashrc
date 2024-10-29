@@ -20,9 +20,13 @@ else
   shopt -s globstar
   shopt -s histappend
 
-  HISTCONTROL=ignoreboth
-  HISTSIZE=10000
-  HISTFILESIZE=100000
+  export HISTCONTROL=ignoreboth
+  export HISTSIZE=10000
+  export HISTFILESIZE=100000
+  export PROMPT_DIRTRIM=3
+
+  # powerline or multiline
+  PS1_STYLE="multiline"
 
   # export EDITOR variable
   if [[ -x /usr/bin/nvim ]]; then
@@ -46,15 +50,20 @@ else
     . "${HOME}/.bash_paths"
   fi
 
-  export PATH
-
   # export HOST variable if empty
-  if [[ -z ${HOST} ]]; then
+  if [[ -z ${HOST} && -f /etc/hostname ]]; then
     export HOST=$(</etc/hostname)
   fi
 
   # very handy aliases / compatible with unix-like systems
   alias ll='ls -alhF'
+
+  # sudo alias
+  if [[ -f ~/.bashrc ]]; then
+    alias sudo='sudo -i --preserve-env="SSH_TTY,EDITOR" /bin/bash --rcfile ~/.bashrc'
+  else
+    alias sudo='sudo -i --preserve-env="SSH_TTY,EDITOR"'
+  fi
 
   # source additional aliases
   if [[ -f "$HOME/.bash_aliases" ]]; then
@@ -106,15 +115,48 @@ else
     e_style['reverse']='\[\033[7m\]'  
   fi
  
-  UID_PS1_COLOR="${e_style['bg_green']}"
+  UID_PS1_FG="${e_style['fg_green']}"
+  UID_PS1_BG="${e_style['bg_green']}"
   if [[ ${UID} -eq 0 ]]; then  
-    UID_PS1_COLOR="${e_style['bg_red']}"  
+    UID_PS1_FG="${e_style['fg_red']}"  
+    UID_PS1_BG="${e_style['bg_red']}"  
+  fi
+
+  HOST_PS1_FG="${e_style['reset_all']}"
+  if [[ ! -z ${SSH_TTY} ]]; then
+    HOST_PS1_FG="${e_style['fg_yellow']}"
   fi
   
-  if [[ -v e_style['reset_all'] ]]; then
-    PS1="${e_style['bg_white']}${e_style['fg_black']} \H "
-    PS1="${PS1}${UID_PS1_COLOR}${e_style['fg_white']}${e_style['fg_black']} \u ${e_style['fg_bblack']}${e_style['reverse']}${e_style['reset_all']}"             
-    PS1="${PS1}${e_style['bg_bblack']}${e_style['fg_white']} \w ${e_style['reset_all']}${e_style['fg_bblack']}${e_style['reset_all']} \\$ ${e_style['reset_all']}"
+  # powerline
+  if [[ -v e_style['reset_all'] && ${PS1_STYLE} == "powerline" ]]; then
+    PS1=""
+    PS1="${PS1}${e_style['bg_white']}${e_style['fg_black']} \H "
+    PS1="${PS1}${UID_PS1_BG}${e_style['fg_white']}"
+    PS1="${PS1}${e_style['fg_black']} \u "
+    PS1="${PS1}${e_style['fg_bblack']}${e_style['reverse']}"
+    PS1="${PS1}${e_style['reset_all']}"      
+    PS1="${PS1}${e_style['bg_bblack']}${e_style['fg_white']} \w "
+    PS1="${PS1}${e_style['reset_all']}"
+    PS1="${PS1}${e_style['fg_bblack']}"
+    PS1="${PS1}${e_style['reset_all']} \\$"
+    PS1="${PS1}${e_style['reset_all']} "
+    export PS1
+  fi
+
+  if [[ -v e_style['reset_all'] && ${PS1_STYLE} == "multiline" ]]; then
+    PS1=" "
+    PS1="${PS1}${e_style['fg_magenta']}┌─"
+    PS1="${PS1}${e_style['reset_all']} \t "
+    PS1="${PS1}${e_style['fg_magenta']}─"
+    PS1="${PS1}${e_style['fg_magenta']}${HOST_PS1_FG} \H "
+    PS1="${PS1}${e_style['fg_magenta']}["
+    PS1="${PS1}${e_style['fg_blue']} \[\w\] "
+    PS1="${PS1}${e_style['fg_magenta']}]"
+    PS1="${PS1}${e_style['reset_al']}\n "
+    PS1="${PS1}${e_style['fg_magenta']}└─"
+    PS1="${PS1}${UID_PS1_FG} \u"
+    PS1="${PS1}${UID_PS1_FG} \\$"
+    PS1="${PS1}${e_style['reset_all']} "
     export PS1
   fi
 
