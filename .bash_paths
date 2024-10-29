@@ -1,5 +1,5 @@
+# vi: ft=bash
 CUSTOM_PATHS=(
-  "${HOME}/bin"
   "${HOME}/.local/bin"
   "${HOME}/.local/lib/python3/bin"
 )
@@ -9,3 +9,5 @@ for CUSTOM_PATH in ${CUSTOM_PATHS[@]}; do
     PATH="${PATH}:${CUSTOM_PATH}"
   fi
 done
+
+export PATH
