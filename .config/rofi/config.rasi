@@ -1,0 +1,18 @@
+configuration {
+  show-icons: false;
+  disable-history: false;
+  click-to-exit: true;
+  location: 0;
+  font: "UbuntuSansMono Nerd Font 15";
+
+  timeout {
+    action: "kb-cancel";
+    delay:  0;
+  }
+  filebrowser {
+    directories-first: true;
+    sorting-method:    "name";
+  }
+}
+
+@import "conf.d/catppuccin-mocha.theme.rasi"

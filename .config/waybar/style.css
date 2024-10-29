@@ -1,0 +1,124 @@
+@define-color wb_bg rgba(30, 30, 46, 1.0);
+@define-color wb_fg rgba(151, 81, 237, 1.0);
+@define-color wb_ac rgba(221, 76, 176, 1.0);
+
+* {
+    all:                  initial;
+    border:               none;
+    border-radius:        0px;
+    font-family:          "JetBrainsMono Nerd Font";
+    font-size:            1em;
+    box-shadow:           none;
+    text-shadow:          none;
+    transition-duration:  0s;
+    padding:              0px;
+    margin:               0px;
+}
+
+window#waybar {
+  background-color: @wb_bg;
+  color: @wb_fg;
+}
+
+#workspaces label {
+  color:             @wb_bg;
+  background-color:  @wb_ac;
+}
+
+#workspaces button.urgent { 
+    color: rgba(33, 164, 223, 1);
+}
+
+#workspaces button.active label {
+  font-weight: bold;
+  color: white;
+}
+
+#window label {
+  color: #BAC2DE;
+  font-size: 0.9em;
+  font-weight: bold;
+  padding: 0em 1em;
+}
+
+#tray {
+  background-color: @wb_bg;
+  color: @wb_fg;
+  margin: 0em 0.5em;
+}
+
+#clock {
+  background-color: rgba(151, 81, 237, 1.0);
+  color: rgba(30, 30, 46, 1.0);
+  padding: 0px 10px;
+}
+
+#custom-l_sep {
+  color: rgba(151, 81, 237, 1.0);
+  background-color: rgba(30, 30, 46, 1.0);
+}
+
+#custom-sar_fg_bg {
+  color: @wb_fg;
+  background-color: @wb_bg;
+}
+
+#custom-arr_fg_ac {
+  color: @wb_fg;
+  background-color: @wb_ac;
+}
+
+#custom-arr_ac_bg {
+  color: @wb_ac;
+  background-color: @wb_bg;
+}
+
+#custom-arl_bg_fg {
+  color: @wb_bg;
+  background-color: @wb_fg;
+}
+
+#custom-arl_fg_bg,
+#custom-r_end {
+  color: @wb_fg;
+  background-color: @wb_bg;
+}
+
+#mode, 
+#battery, 
+#cpu, 
+#memory, 
+#network, 
+#bluetooth,
+#pulseaudio, 
+#idle_inhibitor, 
+#temperature,
+#custom-layout,
+#backlight {
+/*    min-width: 30px;*/
+}
+
+
+#battery.warning {
+   color: rgba(255, 210, 4, 1);
+}
+
+#battery.critical {
+    color: rgba(238, 46, 36, 1);
+}
+
+#battery.charging {
+    color: rgba(217, 216, 216, 1);
+}
+
+#bluetooth.disabled {
+    color: rgba(128, 128, 128, 1);
+}
+
+#bluetooth.off {
+    color: rgba(128, 128, 128, 1);
+}
+
+#bluetooth.connected {
+    color: rgba(115, 186, 37, 1);
+}

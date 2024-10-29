@@ -1,0 +1,167 @@
+{
+    "layer": "top", // Waybar at top layer
+    "font-family": "UbuntuSansMono Nerd Font",
+    "gtk-layer-shell": "true",
+    "modules-left": ["clock#showtime", "custom/arr_fg_ac", "hyprland/workspaces", "custom/arr_ac_bg", "hyprland/window"],
+    "modules-center": [],
+    "modules-right": ["custom/arl_fg_bg", "clock#showdate", "custom/arl_bg_fg", "tray", "custom/arl_fg_bg" ],
+    "hyprland/workspaces": {
+      "format": " {id} ",
+      "on-scroll-up": "hyprctl dispatch workspace e+1",
+      "on-scroll-down": "hyprctl dispatch workspace e-1",
+    },
+    "hyprland/window": {
+      "separate-outputs": true,
+    },
+    "custom/zypper": {
+        "format": "{} ",
+        "interval": 3600,
+        "exec": "zypper lu | grep 'v \\+|' | wc -l; echo 'packages to update'",
+        "exec-if": "exit 0",
+        "on-click": "exec alacritty -e sudo sh -c 'zypper ref; zypper dup; pkill -SIGRTMIN+8 waybar'",
+        "signal": 8
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        } 
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 2
+    },
+    "custom/sar_fg_bg": {
+      "format": "",
+      "interval" : "once",
+      "tooltip": false
+    },
+    "custom/sar_fg_bg": {
+      "format": "",
+      "interval" : "once",
+      "tooltip": false
+    },
+    "custom/arr_fg_ac": {
+      "format": "",
+      "interval" : "once",
+      "tooltip": false
+    },
+    "custom/arr_ac_bg": {
+      "format": "",
+      "interval" : "once",
+      "tooltip": false
+    },
+    "custom/arl_fg_bg": {
+      "format": "",
+      "interval" : "once",
+      "tooltip": false
+    },
+    "custom/arl_bg_fg": {
+      "format": "",
+      "interval" : "once",
+      "tooltip": false
+    },
+    "custom/blank": {
+      "format": " ",
+      "interval": "once",
+      "tooltip": false
+    },
+    "clock#showdate": {
+        "timezone": "Europe/Bratislava",
+        "format": "{:%d-%b-%Y}",
+        //"format": "{:%Y-%b-%d  %R}",
+        "interval": 10
+    },
+    "clock#showtime": {
+        "timezone": "Europe/Bratislava",
+        "format": "{:%R}",
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", ""]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}",
+        "format-charging": "",
+        "format-plugged": "",
+        "format-alt": "{capacity}% {time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-linked": "",
+        "format-disconnected": "⚠",
+        "format-alt": "{ifname} {essid} ({signalStrength}%)"
+    },
+    "bluetooth": {
+	"format": "",
+	"format-disabled": "",
+	"format-off": "",
+	"format-connected": " {num_connections}",
+	// "format-connected": " {device_alias}",
+	"tooltip-format": "{controller_address} {status}\n\n{num_connections} connected",
+	"tooltip-format-disabled": "{status}",
+	"tooltip-format-connected": "{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	"format-connected-battery": " {device_alias} {device_battery_percentage}%",
+	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+	"on-click": "bluetooth toggle; pkill -SIGRTMIN+8 waybar",
+	"on-click-right": "exec alacritty -e sh -c 'bluetoothctl'"
+    },
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-alt": "{volume} {icon}",
+        "format-alt-click": "click-right",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "scroll-step": 10,
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "tooltip": false
+    },
+    "custom/notification": {
+      "tooltip": true,
+      "format": "{icon}",
+      "format-icons": {
+           "notification": "<span foreground='red'><small><sup>⬤</sup></small></span>",
+           "none": " ",
+           "dnd-notification": "<span foreground='red'><small><sup>⬤</sup></small></span>",
+           "dnd-none": " "
+      },
+      "return-type": "json",
+      "escape": true
+   }
+}
