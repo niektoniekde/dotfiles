@@ -1,5 +1,13 @@
 # .bashrc
 
+# (re)define aliases - always
+alias ll='ls -alhF'
+if [[ -f ~/.bashrc ]]; then
+  alias sudoi='sudo -i --preserve-env="SSH_TTY,EDITOR" /bin/bash --rcfile ~/.bashrc'
+else
+  alias sudoi='sudo -i --preserve-env="SSH_TTY,EDITOR"'
+fi
+
 # prevent multiple sourcing for same user
 if [[ ${USER_BASHRC} == ${USER} || ${USER_BASHRC} == $(id -u) ]]; then
   return
@@ -55,15 +63,6 @@ else
     export HOST=$(</etc/hostname)
   fi
 
-  # very handy aliases / compatible with unix-like systems
-  alias ll='ls -alhF'
-
-  # sudo alias
-  if [[ -f ~/.bashrc ]]; then
-    alias sudo='sudo -i --preserve-env="SSH_TTY,EDITOR" /bin/bash --rcfile ~/.bashrc'
-  else
-    alias sudo='sudo -i --preserve-env="SSH_TTY,EDITOR"'
-  fi
 
   # source additional aliases
   if [[ -f "$HOME/.bash_aliases" ]]; then
@@ -76,43 +75,43 @@ else
     e_style['bg_black']='\[\033[40m\]'
     e_style['bg_red']='\[\033[41m\]'
     e_style['bg_green']='\[\033[42m\]'
-    e_style['bg_yellow']='\[\033[43m\]'  
-    e_style['bg_blue']='\[\033[44m\]'  
-    e_style['bg_magenta']='\[\033[45m\]'  
-    e_style['bg_cyan']='\[\033[46m\]'  
-    e_style['bg_white']='\[\033[47m\]'  
+    e_style['bg_yellow']='\[\033[43m\]'
+    e_style['bg_blue']='\[\033[44m\]'
+    e_style['bg_magenta']='\[\033[45m\]'
+    e_style['bg_cyan']='\[\033[46m\]'
+    e_style['bg_white']='\[\033[47m\]'
     # bg colors - bright
-    e_style['bg_bblack']='\[\033[100m\]'  
-    e_style['bg_bred']='\[\033[101m\]'  
-    e_style['bg_bgreen']='\[\033[102m\]'  
-    e_style['bg_byellow']='\[\033[103m\]'  
-    e_style['bg_bblue']='\[\033[104m\]'  
-    e_style['bg_bmagenta']='\[\033[105m\]'  
-    e_style['bg_bcyan']='\[\033[106m\]'  
-    e_style['bg_bwhite']='\[\033[107m\]'  
+    e_style['bg_bblack']='\[\033[100m\]'
+    e_style['bg_bred']='\[\033[101m\]'
+    e_style['bg_bgreen']='\[\033[102m\]'
+    e_style['bg_byellow']='\[\033[103m\]'
+    e_style['bg_bblue']='\[\033[104m\]'
+    e_style['bg_bmagenta']='\[\033[105m\]'
+    e_style['bg_bcyan']='\[\033[106m\]'
+    e_style['bg_bwhite']='\[\033[107m\]'
  
     # fg colors - base
-    e_style['fg_black']='\[\033[30m\]'  
-    e_style['fg_red']='\[\033[31m\]'  
-    e_style['fg_green']='\[\033[32m\]'  
-    e_style['fg_yellow']='\[\033[33m\]'  
-    e_style['fg_blue']='\[\033[34m\]'  
-    e_style['fg_magenta']='\[\033[35m\]'  
-    e_style['fg_cyan']='\[\033[36m\]'  
-    e_style['fg_white']='\[\033[37m\]'  
+    e_style['fg_black']='\[\033[30m\]'
+    e_style['fg_red']='\[\033[31m\]'
+    e_style['fg_green']='\[\033[32m\]'
+    e_style['fg_yellow']='\[\033[33m\]'
+    e_style['fg_blue']='\[\033[34m\]'
+    e_style['fg_magenta']='\[\033[35m\]'
+    e_style['fg_cyan']='\[\033[36m\]'
+    e_style['fg_white']='\[\033[37m\]'
     # fg colors - bright
-    e_style['fg_bblack']='\[\033[90m\]'  
-    e_style['fg_bred']='\[\033[91m\]'  
-    e_style['fg_bgreen']='\[\033[92m\]'  
-    e_style['fg_byellow']='\[\033[93m\]'  
-    e_style['fg_bblue']='\[\033[94m\]'  
-    e_style['fg_bmagenta']='\[\033[95m\]'  
-    e_style['fg_bcyan']='\[\033[96m\]'  
-    e_style['fg_bwhite']='\[\033[97m\]'  
+    e_style['fg_bblack']='\[\033[90m\]'
+    e_style['fg_bred']='\[\033[91m\]'
+    e_style['fg_bgreen']='\[\033[92m\]'
+    e_style['fg_byellow']='\[\033[93m\]'
+    e_style['fg_bblue']='\[\033[94m\]'
+    e_style['fg_bmagenta']='\[\033[95m\]'
+    e_style['fg_bcyan']='\[\033[96m\]'
+    e_style['fg_bwhite']='\[\033[97m\]'
     # reset colorization
-    e_style['reset_all']='\[\033[0m\]'  
-    e_style['bold']='\[\033[1m\]'  
-    e_style['reverse']='\[\033[7m\]'  
+    e_style['reset_all']='\[\033[0m\]'
+    e_style['bold']='\[\033[1m\]'
+    e_style['reverse']='\[\033[7m\]'
   fi
  
   UID_PS1_FG="${e_style['fg_green']}"
