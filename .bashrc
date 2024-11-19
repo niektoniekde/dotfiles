@@ -3,9 +3,15 @@
 # (re)define aliases - always
 alias ll='ls -alhF'
 if [[ -f ~/.bashrc ]]; then
-  alias sudoi='sudo -i --preserve-env="SSH_TTY,EDITOR" /bin/bash --rcfile ~/.bashrc'
+  alias sudoi='sudo -i --preserve-env="SSH_TTY,EDITOR,TMUXCONF" /bin/bash --rcfile ~/.bashrc'
 else
   alias sudoi='sudo -i --preserve-env="SSH_TTY,EDITOR"'
+fi
+
+if [[ $(id -u) -eq 0 && -n ${SUDO_USER} && -n ${TMUXCONF} ]]; then
+  if [[ -f ${TMUXCONF} ]]; then
+    alias tmux="tmux -f ${TMUXCONF}"
+  fi
 fi
 
 # prevent multiple sourcing for same user
@@ -38,12 +44,14 @@ else
 
   # export EDITOR variable
   if [[ -x /usr/bin/nvim ]]; then
-    EDITOR=nvim
+    export EDITOR=nvim
   elif [[ -x /usr/bin/vim ]]; then
-    EDITOR=vim
+    export EDITOR=vim
   fi
 
-  export EDITOR
+  if [[ -f "${HOME}/.tmux.conf" ]]; then
+    export TMUXCONF="${HOME}/.tmux.conf"
+  fi
 
   # fix missing locales if apply
   if [[ -z $LC_CTYPE ]]; then          export LC_CTYPE=en_US.UTF-8; fi
