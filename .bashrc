@@ -2,14 +2,20 @@
 
 # (re)define aliases - always
 alias ll='ls -alhF'
+alias proxyenv-unset="unset {http,https,no}_proxy; unset {HTTP,HTTPS,NO}_PROXY;"
+alias tcpdump="tcpdump -nnn"
+alias ip="ip -c"
+alias watch="watch -c"
+alias tcpdump="tcpdump -nnn"
+
 if [[ -f ~/.bashrc ]]; then
   alias sudoi='sudo -i --preserve-env="SSH_TTY,EDITOR,TMUXCONF" /bin/bash --rcfile ~/.bashrc'
 else
   alias sudoi='sudo -i --preserve-env="SSH_TTY,EDITOR"'
 fi
 
-if [[ $(id -u) -eq 0 && -n ${SUDO_USER} && -n ${TMUXCONF} ]]; then
-  if [[ -f ${TMUXCONF} ]]; then
+if [[ $(id -u) -eq 0 && -n ${SUDO_USER} ]]; then
+  if [[ -n ${TMUXCONF} && -f ${TMUXCONF} ]]; then
     alias tmux="tmux -f ${TMUXCONF}"
   fi
 fi
@@ -69,12 +75,6 @@ else
   # export HOST variable if empty
   if [[ -z ${HOST} && -f /etc/hostname ]]; then
     export HOST=$(</etc/hostname)
-  fi
-
-
-  # source additional aliases
-  if [[ -f "$HOME/.bash_aliases" ]]; then
-    . "$HOME/.bash_aliases"
   fi
 
   if [[ ! -v e_style['reset_all'] ]]; then
