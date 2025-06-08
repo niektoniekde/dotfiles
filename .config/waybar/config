@@ -1,17 +1,18 @@
+// !ft=jsonc
 {
     "layer": "top", // Waybar at top layer
     "font-family": "UbuntuSansMono Nerd Font",
-    "gtk-layer-shell": "true",
+    "gtk-layer-shell": "false",
     "modules-left": ["clock#showtime", "custom/arr_fg_ac", "hyprland/workspaces", "custom/arr_ac_bg", "hyprland/window"],
     "modules-center": [],
     "modules-right": ["custom/arl_fg_bg", "clock#showdate", "custom/arl_bg_fg", "tray", "custom/arl_fg_bg" ],
     "hyprland/workspaces": {
       "format": " {id} ",
       "on-scroll-up": "hyprctl dispatch workspace e+1",
-      "on-scroll-down": "hyprctl dispatch workspace e-1",
+      "on-scroll-down": "hyprctl dispatch workspace e-1"
     },
     "hyprland/window": {
-      "separate-outputs": true,
+      "separate-outputs": true
     },
     "custom/zypper": {
         "format": "{} ",
