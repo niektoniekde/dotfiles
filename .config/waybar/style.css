@@ -1,28 +1,30 @@
-@define-color wb_bg rgba(30, 30, 46, 1.0);
-@define-color wb_fg rgba(151, 81, 237, 1.0);
-@define-color wb_ac rgba(221, 76, 176, 1.0);
+@define-color wbc_ac1 #dd4cb0;
+@define-color wbc_ac2 #9751ed;
+@define-color wbc_bg  #1e1e2e;
+@define-color wbc_fg  #bac2de;
+@define-color wbc_ac3 #222232;
 
 * {
-    all:                  initial;
-    border:               none;
-    border-radius:        0px;
-    font-family:          "JetBrainsMono Nerd Font";
-    font-size:            1em;
-    box-shadow:           none;
-    text-shadow:          none;
-    transition-duration:  0s;
-    padding:              0px;
-    margin:               0px;
+  all:                  initial;
+  border:               none;
+  border-radius:        0px;
+  font-family:          "JetBrainsMono Nerd Font";
+  font-size:            1.0em;
+  box-shadow:           none;
+  text-shadow:          none;
+  transition-duration:  0s;
+  padding:              0px;
+  margin:               0px;
 }
 
 window#waybar {
-  background-color: @wb_bg;
-  color: @wb_fg;
+  background-color: @wbc_bg;
+  color: @wbc_fg;
 }
 
 #workspaces label {
-  color:             @wb_bg;
-  background-color:  @wb_ac;
+  color:             @wbc_bg;
+  background-color:  @wbc_ac1;
 }
 
 #workspaces button.urgent { 
@@ -35,54 +37,32 @@ window#waybar {
 }
 
 #window label {
-  color: #BAC2DE;
-  font-size: 0.9em;
-  font-weight: bold;
+  color: @wbc_fg;
+  background-color: @wbc_ac3;
+  font-size: 0.8em;
   padding: 0em 1em;
 }
 
 #tray {
-  background-color: @wb_bg;
-  color: @wb_fg;
-  margin: 0em 0.5em;
+  padding: 0em 0.5em;
+  background-color: @wbc_ac3;
 }
 
-#clock {
-  background-color: rgba(151, 81, 237, 1.0);
-  color: rgba(30, 30, 46, 1.0);
-  padding: 0px 10px;
+#clock.showtime {
+  background-color: @wbc_ac2;
+  color: @wbc_bg;
+  padding: 0em 1em 0em 0.5em;
+  font-size: 1em;
+  font-weight: bold;
 }
 
-#custom-l_sep {
-  color: rgba(151, 81, 237, 1.0);
-  background-color: rgba(30, 30, 46, 1.0);
+#clock.showdate {
+  background-color: @wbc_ac2;
+  color: @wbc_bg;
+  padding: 0.3em 0em 0em 1.5em;
+  font-size: 0.7em;
 }
 
-#custom-sar_fg_bg {
-  color: @wb_fg;
-  background-color: @wb_bg;
-}
-
-#custom-arr_fg_ac {
-  color: @wb_fg;
-  background-color: @wb_ac;
-}
-
-#custom-arr_ac_bg {
-  color: @wb_ac;
-  background-color: @wb_bg;
-}
-
-#custom-arl_bg_fg {
-  color: @wb_bg;
-  background-color: @wb_fg;
-}
-
-#custom-arl_fg_bg,
-#custom-r_end {
-  color: @wb_fg;
-  background-color: @wb_bg;
-}
 
 #mode, 
 #battery, 
@@ -96,19 +76,19 @@ window#waybar {
 #custom-layout,
 #backlight {
 /*    min-width: 30px;*/
+  color: @wbc_fg;
+  font-size: 0.8em;
+  padding: 0em 0.6em;
 }
 
-
 #battery.warning {
-   color: rgba(255, 210, 4, 1);
 }
 
 #battery.critical {
-    color: rgba(238, 46, 36, 1);
+  color: red;
 }
 
 #battery.charging {
-    color: rgba(217, 216, 216, 1);
 }
 
 #bluetooth.disabled {
@@ -122,3 +102,85 @@ window#waybar {
 #bluetooth.connected {
     color: rgba(115, 186, 37, 1);
 }
+
+#custom-sar_fg_bg {
+  color: @wbc_fg;
+  background-color: @wbc_bg;
+}
+
+#custom-sar_bg_fg {
+  color: @wbc_bg;
+  background-color: @wbc_fg;
+}
+#custom-sal_bg_fg {
+  color: @wbc_bg;
+  background-color: @wbc_fg;
+}
+
+#custom-sal_fg_bg {
+  color: @wbc_fg;
+  background-color: @wbc_bg;
+}
+
+#custom-arr_ac2_ac1 {
+  color: @wbc_ac2;
+  background-color: @wbc_ac1;
+}
+#custom-arr_fg_bg {
+  color: @wbc_fg;
+  background-color: @wbc_bg;
+}
+#custom-arr_fg_ac3 {
+  color: @wbc_fg;
+  background-color: @wbc_ac3;
+}
+#custom-arr_ac3_bg {
+  color: @wbc_ac3;
+  background-color: @wbc_bg;
+}
+#custom-arr_bg_fg {
+  color: @wbc_bg;
+  background-color: @wbc_fg;
+}
+#custom-arr_ac1_bg {
+  color: @wbc_ac1;
+  background-color: @wbc_bg;
+}
+#custom-arr_ac1_ac3 {
+  color: @wbc_ac1;
+  background-color: @wbc_ac3;
+}
+#custom-arr_ac1_fg {
+  color: @wbc_ac1;
+  background-color: @wbc_fg;
+}
+#custom-arl_ac2_ac1 {
+  color: @wbc_ac2;
+  background-color: @wbc_ac1;
+}
+#custom-arl_fg_bg {
+  color: @wbc_fg;
+  background-color: @wbc_bg;
+}
+#custom-arl_bg_fg {
+  color: @wbc_bg;
+  background-color: @wbc_fg;
+}
+#custom-arl_ac2_bg {
+  color: @wbc_ac2;
+  background-color: @wbc_bg;
+}
+#custom-arl_ac3_bg {
+  color: @wbc_ac3;
+  background-color: @wbc_bg;
+}
+#custom-arl_bg_ac2 {
+  color: @wbc_bg;
+  background-color: @wbc_ac2;
+}
+#custom-arl_ac2_fg {
+  color: @wbc_ac2;
+  background-color: @wbc_fg;
+}
+
+
