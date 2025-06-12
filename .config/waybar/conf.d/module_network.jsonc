@@ -1,0 +1,40 @@
+{
+  "network#wifiessid": {
+      "interface": "wlp*",
+      "interval": 1,
+      "format": "",
+      "format-wifi": "{essid}",
+      "format-ethernet": "",
+      "format-linked": "",
+      "format-disconnected": "",
+      "tooltip-format": "{ifname}",
+  },
+  "network#wifibandi": {
+      "interface": "wlp*",
+      "interval": 1,
+      "format": "",
+      "format-wifi": "{bandwidthDownBytes:>}",
+      "format-ethernet": "",
+      "format-linked": "",
+      "format-disconnected": "",
+  },
+  "network#wifibando": {
+      "interface": "wlp*",
+      "interval": 1,
+      "format": "",
+      "format-wifi": "{bandwidthUpBytes:>}",
+      "format-ethernet": "",
+      "format-linked": "",
+      "format-disconnected": "",
+  }
+//  "network#wifiessid": {
+//      "interface": "*",
+//      "interval": 1,
+//      "format": "",
+//      "format-wifi": "",
+//      "format-ethernet": "",
+//      "format-linked": "",
+//      "format-disconnected": "",
+//      "format-alt": ""
+//  },
+}

@@ -1,0 +1,50 @@
+{
+  "backlight": {
+      // "device": "acpi_video1",
+      "format": "{percent}% {icon}",
+      "format-icons": ["", ""]
+  },
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "",
+    "format-off": "",
+    "format-connected": " {num_connections}",
+    // "format-connected": " {device_alias}",
+    "tooltip-format": "{controller_address} {status}\n\n{num_connections} connected",
+    "tooltip-format-disabled": "{status}",
+    "tooltip-format-connected": "{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+    "on-click": "bluetooth toggle; pkill -SIGRTMIN+8 waybar",
+    "on-click-right": "exec alacritty -e sh -c 'bluetoothctl'"
+  },
+  "custom/notification": {
+    "tooltip": true,
+    "format": "{icon}",
+    "format-icons": {
+         "notification": "<span fgcolor='#9751ed' weight='bold' size='small'><sup>⬤</sup></span>",
+         "none": " ",
+         "dnd-notification": "<span fgcolor='#9751ed' weight='bold' size='small'><sup>⬤</sup></span>",
+         "dnd-none": " "
+    },
+    "return-type": "json",
+    "escape": true
+  },
+  "custom/zypper": {
+      "format": "{} ",
+      "interval": 3600,
+      "exec": "zypper lu | grep 'v \\+|' | wc -l; echo 'packages to update'",
+      "exec-if": "exit 0",
+      "on-click": "exec alacritty -e sudo sh -c 'zypper ref; zypper dup; pkill -SIGRTMIN+8 waybar'",
+      "signal": 8
+  },
+  "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+          "activated": "",
+          "deactivated": ""
+      } 
+  }
+}

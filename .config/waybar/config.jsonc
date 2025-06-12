@@ -1,0 +1,58 @@
+// vi: ft=jsonc
+{
+  "layer": "top", // Waybar at top layer
+  "font-family": "UbuntuSansMono Nerd Font",
+  "gtk-layer-shell": "false",
+  "include": [
+    "~/.config/waybar/conf.d/custom_arrows.jsonc",
+    "~/.config/waybar/conf.d/custom_labels.jsonc",
+    "~/.config/waybar/conf.d/module_clock.jsonc",
+    "~/.config/waybar/conf.d/module_network.jsonc",
+    "~/.config/waybar/conf.d/module_cpumem.jsonc",
+    "~/.config/waybar/conf.d/module_audio.jsonc",
+    "~/.config/waybar/conf.d/module_power.jsonc",
+    "~/.config/waybar/conf.d/module_sensors.jsonc"
+  ],
+  "modules-left": [
+    "clock#showdate",
+    "clock#showtime",
+    "custom/arr_ac2_ac1",
+    "hyprland/workspaces",
+    "custom/arr_ac1_ac3",
+    "hyprland/window",
+    "custom/arr_ac3_bg"
+  ],
+  "modules-center": [],
+  "modules-right": [ 
+    "custom/la_cpu",
+    "cpu",
+    "cpu#freq",
+    "temperature#cpu",
+    "custom/la_mem",
+    "memory",
+    "network#wifiessid",
+    "custom/la_net_ib",
+    "network#wifibandi",
+    "custom/la_net_ob",
+    "network#wifibando",
+    "custom/la_vol",
+    "pulseaudio",
+    "custom/la_bat",
+    "battery",
+    "custom/arl_ac3_bg",
+    "tray"
+  ],
+  "hyprland/workspaces": {
+    "format": " {id} ",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
+  },
+  "hyprland/window": {
+    "separate-outputs": true,
+    "expand": true
+  },
+  "tray": {
+      "icon-size": 16,
+      "spacing": 2
+  }
+}

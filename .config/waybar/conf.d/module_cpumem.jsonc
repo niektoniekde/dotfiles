@@ -1,0 +1,16 @@
+{
+  "cpu": {
+      "interval": 1,
+      "format": "{usage:3}%",
+      "tooltip": false
+  },
+  "cpu#freq": {
+      "interval": 1,
+      "format": "{max_frequency:4}GHz",
+      "tooltip": false
+  },
+  "memory": {
+      "interval": 2,
+      "format": "{percentage:3}%"
+  }
+}

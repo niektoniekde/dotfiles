@@ -1,0 +1,242 @@
+{
+  //
+  // SLIM ARROWS - LEFT
+  //
+  "custom/sal_fg_bg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/sal_bg_fg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  // SLIM ARROWS - RIGHT
+  "custom/sar_fg_bg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/sar_bg_fg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  //
+  // ARROWS - RIGHT
+  //
+  "custom/arr_fg_bg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_fg_ac": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_fg_ac2": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_fg_ac3": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_bg_fg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_bg_ac": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_bg_ac2": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_bg_ac3": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_bg_ac3": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_ac1_fg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_ac1_bg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_ac1_ac2": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_ac1_ac3": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_ac2_fg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_ac2_bg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_ac2_ac1": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_ac2_ac3": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_ac3_fg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_ac3_bg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_ac3_ac1": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arr_ac3_ac2": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  //
+  // ARROWS - LEFT
+  //
+  "custom/arl_fg_bg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_fg_ac": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_fg_ac2": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_fg_ac3": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_bg_fg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_bg_ac": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_bg_ac2": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_bg_ac3": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_bg_ac3": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_ac1_fg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_ac1_bg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_ac1_ac2": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_ac1_ac3": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_ac2_fg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_ac2_bg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_ac2_ac1": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_ac2_ac3": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_ac3_fg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_ac3_bg": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_ac3_ac1": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/arl_ac3_ac2": {
+    "format": "",
+    "interval" : "once",
+    "tooltip": false
+  },
+}

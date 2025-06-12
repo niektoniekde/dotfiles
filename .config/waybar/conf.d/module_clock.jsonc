@@ -1,0 +1,11 @@
+{
+  "clock#showdate": {
+    "timezone": "Europe/Bratislava",
+    "format": "{:%d-%b-%Y}",
+    "interval": 10
+  },
+  "clock#showtime": {
+    "timezone": "Europe/Bratislava",
+    "format": "{:%R}"
+  }
+}

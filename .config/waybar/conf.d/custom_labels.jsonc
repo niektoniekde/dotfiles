@@ -1,0 +1,32 @@
+{
+  "custom/la_cpu": {
+    "format": "cpu",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/la_mem": {
+    "format": "mem",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/la_net_ib": {
+    "format": "↓",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/la_net_ob": {
+    "format": "↑",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/la_vol": {
+    "format": "vol",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/la_bat": {
+    "format": "bat",
+    "interval" : "once",
+    "tooltip": false
+  }
+}

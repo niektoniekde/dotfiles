@@ -1,0 +1,14 @@
+{
+  "battery": {
+      "interval": 10,
+      "states": {
+          // "good": 95,
+          "warning": 30,
+          "critical": 15
+      },
+      "format":          "↓{capacity:3}%",
+      "format-charging": "↑{capacity:3}%",
+      "format-plugged":  "↯{capacity:3}%",
+      "format-alt":      "{capacity}% {time}"
+  }
+}
