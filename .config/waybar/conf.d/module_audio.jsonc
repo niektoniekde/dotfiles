@@ -1,22 +1,19 @@
 {
-  "pulseaudio": {
+  "pulseaudio#out": {
       "interval": 2,
       "format": "{volume:3}%",
-      "format-alt": "{volume} {icon}",
-      "format-alt-click": "click-right",
-      "format-muted": "",
-      "format-icons": {
-          "headphones": "",
-          "handsfree": "",
-          "headset": "",
-          "phone": "",
-          "portable": "",
-          "car": "",
-          "default": ["", "", ""]
-      },
-      "scroll-step": 10,
-      "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-      "on-click-right": "pavucontrol",
+      "format-muted": " -M-",
+      "format-source": "{volume:3}%",
+      "format-source-muted": " -M-",
+      "on-click": "pavucontrol",
+      "tooltip": false
+  },
+  "pulseaudio#inp": {
+      "interval": 2,
+      "format": "{format_source}",
+      "format-source": "{volume:3}%",
+      "format-source-muted": " -M-",
+      "on-click": "pavucontrol",
       "tooltip": false
   }
 }

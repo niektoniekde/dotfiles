@@ -9,6 +9,5 @@
       "format":          "↓{capacity:3}%",
       "format-charging": "↑{capacity:3}%",
       "format-plugged":  "↯{capacity:3}%",
-      "format-alt":      "{capacity}% {time}"
   }
 }

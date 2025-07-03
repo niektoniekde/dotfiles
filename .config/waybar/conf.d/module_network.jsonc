@@ -1,31 +1,22 @@
 {
-  "network#wifiessid": {
-      "interface": "wlp*",
-      "interval": 1,
+  "network#name": {
+      "interval": 5,
       "format": "",
-      "format-wifi": "{essid}",
-      "format-ethernet": "",
+      "format-wifi": "{essid} <span font-size='x-large'><sup>{signaldBm}</sup></span>",
+      "format-ethernet": "{ifname}",
       "format-linked": "",
       "format-disconnected": "",
       "tooltip-format": "{ifname}",
   },
-  "network#wifibandi": {
-      "interface": "wlp*",
+  "network#band": {
       "interval": 1,
       "format": "",
-      "format-wifi": "{bandwidthDownBytes:>}",
-      "format-ethernet": "",
+      "format-wifi": " ↓{bandwidthDownBytes:>} ↑{bandwidthUpBytes:>}",
+      "format-ethernet": " ↓{bandwidthDownBytes:>} ↑{bandwidthUpBytes:>}",
       "format-linked": "",
       "format-disconnected": "",
-  },
-  "network#wifibando": {
-      "interface": "wlp*",
-      "interval": 1,
-      "format": "",
-      "format-wifi": "{bandwidthUpBytes:>}",
-      "format-ethernet": "",
-      "format-linked": "",
-      "format-disconnected": "",
+      "tooltip": true,
+      "tooltip-format": "{ipaddr}/{cidr} {gwaddr}"
   }
 //  "network#wifiessid": {
 //      "interface": "*",

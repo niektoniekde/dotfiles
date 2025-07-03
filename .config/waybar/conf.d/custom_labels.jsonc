@@ -19,8 +19,13 @@
     "interval" : "once",
     "tooltip": false
   },
-  "custom/la_vol": {
-    "format": "vol",
+  "custom/la_vol_out": {
+    "format": "ao",
+    "interval" : "once",
+    "tooltip": false
+  },
+  "custom/la_vol_inp": {
+    "format": "ai",
     "interval" : "once",
     "tooltip": false
   },
