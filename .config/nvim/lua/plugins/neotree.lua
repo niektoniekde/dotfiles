@@ -9,15 +9,10 @@ return {
   config = function()
     require("neo-tree").setup({
       enable_git_status = true,
+      git_status_async = false,
       close_if_last_window = true,
+      open_files_using_relative_paths = false,
       popup_border_style = "rounded",
-      filesystem = {
-        filtered_items = {
-          hide_dotfiles = false,
-          hide_gitignored = false
-        }
-      },
-      use_libuv_file_watcher = true,
       window = {
         position = "float",
         mapping_options = {
@@ -25,9 +20,16 @@ return {
           nowait = true,
         }
       },
-      follow_current_file = {
-        enabled = true,
-        leave_dirs_open = false,
+      filesystem = {
+        follow_current_file = {
+          enabled = true,
+          leave_dirs_open = false,
+        },
+        filtered_items = {
+          hide_dotfiles = false,
+          hide_gitignored = false
+        },
+        use_libuv_file_watcher = true
       },
       buffers = {
         follow_current_file = {
