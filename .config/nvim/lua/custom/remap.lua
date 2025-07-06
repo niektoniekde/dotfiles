@@ -17,7 +17,13 @@ nnoremap <Leader>xa :.+,$bd<CR>
 nnoremap <Leader>xc :bd<CR>
 
 " append new line without leaving normal mode
-nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
-nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
+nnoremap <silent> <Leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
+nnoremap <silent> <Leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
+
+" fugitive shortcuts
+nnoremap <Leader>ga :Git add %<CR>
+nnoremap <Leader>gc :Git commit<CR>
+nnoremap <Leader>gp :Git push<CR>
+nnoremap <Leader>gs :Git status<CR>
 ]]
 
