@@ -40,6 +40,6 @@ return {
         show_unloaded = true,
       },
     })
-  vim.keymap.set('n', '<Leader>t', ':Neotree source=last reveal=true<CR>', {})
+  vim.keymap.set('n', '<Leader>t', ':Neotree position=float source=last reveal_force_cwd=true<CR>', {})
   end
 }
