@@ -75,20 +75,21 @@ window#waybar {
 #temperature,
 #custom-layout,
 #backlight,
-#network#band {
+#network#wlp-band,
+#network#enp-band {
 /*    min-width: 30px;*/
   color: @wbc_fg;
   font-size: 0.8em;
   padding: 0em 0.6em;
 }
 
-
 #custom-la_cpu,
 #custom-la_mem,
 #custom-la_vol_inp,
 #custom-la_vol_out,
 #custom-la_bat,
-#network.name {
+#network.wlp-name,
+#network.enp-name {
   color: @wbc_ac2;
   font-size: 0.7em;
   font-weight: bold;

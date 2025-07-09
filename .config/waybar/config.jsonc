@@ -11,7 +11,7 @@
     "~/.config/waybar/conf.d/module_cpumem.jsonc",
     "~/.config/waybar/conf.d/module_audio.jsonc",
     "~/.config/waybar/conf.d/module_power.jsonc",
-    "~/.config/waybar/conf.d/module_sensors.jsonc"
+    "~/.local/etc/waybar/conf.d/module_sensors.jsonc"
   ],
   "modules-left": [
     "clock#showdate",
@@ -30,8 +30,10 @@
     "temperature#cpu",
     "custom/la_mem",
     "memory",
-    "network#name",
-    "network#band",
+    "network#wlp-name",
+    "network#wlp-band",
+    "network#enp-name",
+    "network#enp-band",
     "custom/la_vol_out",
     "pulseaudio#out",
     "custom/la_vol_inp",
