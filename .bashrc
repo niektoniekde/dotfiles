@@ -2,11 +2,14 @@
 
 # (re)define aliases - always
 alias ll='ls -alhF'
+alias ip='ip -c'
+alias watch='watch -c'
+alias tcpdump='tcpdump -nnn'
 alias proxyenv-unset="unset {http,https,no}_proxy; unset {HTTP,HTTPS,NO}_PROXY;"
-alias tcpdump="tcpdump -nnn"
-alias ip="ip -c"
-alias watch="watch -c"
-alias tcpdump="tcpdump -nnn"
+
+if [[ -x /usr/sbin/wpa_cli ]]; then
+  alias wpa_cli='/usr/sbin/wpa_cli'
+fi
 
 if [[ -f ~/.bashrc ]]; then
   alias sudoi='sudo -i --preserve-env="SSH_TTY,EDITOR,TMUXCONF" /bin/bash --rcfile ~/.bashrc'
