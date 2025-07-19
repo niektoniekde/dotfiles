@@ -7,10 +7,10 @@
     "~/.config/waybar/conf.d/custom_arrows.jsonc",
     "~/.config/waybar/conf.d/custom_labels.jsonc",
     "~/.config/waybar/conf.d/module_clock.jsonc",
-    "~/.config/waybar/conf.d/module_network.jsonc",
     "~/.config/waybar/conf.d/module_cpumem.jsonc",
     "~/.config/waybar/conf.d/module_audio.jsonc",
     "~/.config/waybar/conf.d/module_power.jsonc",
+    "~/.local/etc/waybar/conf.d/module_network.jsonc",
     "~/.local/etc/waybar/conf.d/module_sensors.jsonc"
   ],
   "modules-left": [

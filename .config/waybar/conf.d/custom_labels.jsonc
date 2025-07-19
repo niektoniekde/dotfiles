@@ -1,4 +1,9 @@
 {
+  "custom/la_bl": {
+    "format": "bl",
+    "interval" : "once",
+    "tooltip": false
+  },
   "custom/la_cpu": {
     "format": "cpu",
     "interval" : "once",

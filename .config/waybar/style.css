@@ -83,6 +83,7 @@ window#waybar {
   padding: 0em 0.6em;
 }
 
+#custom-la_bl,
 #custom-la_cpu,
 #custom-la_mem,
 #custom-la_vol_inp,

@@ -3,8 +3,6 @@
       "interval": 2,
       "format": "{volume:3}%",
       "format-muted": " -M-",
-      "format-source": "{volume:3}%",
-      "format-source-muted": " -M-",
       "on-click": "pavucontrol",
       "tooltip": false
   },
