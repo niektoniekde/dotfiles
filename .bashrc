@@ -90,7 +90,7 @@ fi
 ## PS1 customization
 ##
 # return if BASH_VERSINFO is lower than 4
-if [[ -z ${BASH_VERSINFO} ]] || [[ ${BASH_VERSINFO} -le 4 ]]; then return; fi
+if [[ -z ${BASH_VERSINFO} ]] || [[ ${BASH_VERSINFO} -lt 4 ]]; then return; fi
 # powerline or multiline
 PS1_STYLE="multiline"
 declare -A e_style
