@@ -7,37 +7,39 @@ alias watch='watch -c'
 alias tcpdump='tcpdump -nnn'
 alias proxyenv-unset="unset {http,https,no}_proxy; unset {HTTP,HTTPS,NO}_PROXY;"
 
-if [[ -x /usr/sbin/wpa_cli ]]; then
-  alias wpa_cli='/usr/sbin/wpa_cli'
-fi
+# don't do this as root
+if [[ 0 -ne $(id -u) ]]; then
 
-if [[ -f ~/.bashrc ]]; then
-  alias sudoi='sudo -i --preserve-env="SSH_TTY,EDITOR,TMUXCONF" /bin/bash --rcfile ~/.bashrc'
-else
-  alias sudoi='sudo -i --preserve-env="SSH_TTY,EDITOR"'
-fi
+  # set sudo alias to source our bashrc and preserve user's VARS that matter
+  if [[ -f ~/.bashrc ]]; then
+    export SUDO_BASHRC="${HOME}/.bashrc"
+    alias sudoi='sudo -i --preserve-env="SSH_TTY,EDITOR,TMUXCONF,SUDO_BASHRC" /bin/bash --rcfile ~/.bashrc'
+  else
+    alias sudoi='sudo -i --preserve-env="SSH_TTY,EDITOR"'
+  fi
 
-if [[ $(id -u) -eq 0 && -n ${SUDO_USER} ]]; then
-  if [[ -n ${TMUXCONF} && -f ${TMUXCONF} ]]; then
-    alias tmux="tmux -f ${TMUXCONF}"
+  # is wpa_cli out of user path? 
+  if [[ -x /usr/sbin/wpa_cli ]]; then
+    alias wpa_cli='/usr/sbin/wpa_cli'
+  fi
+
+  # set TMUXCONF var if .tmux.conf is present in $HOME
+  if [[ -f "${HOME}/.tmux.conf" ]]; then
+    export TMUXCONF="${HOME}/.tmux.conf"
   fi
 fi
 
-# prevent multiple sourcing for same user
-if [[ ${USER_BASHRC} == ${USER} || ${USER_BASHRC} == $(id -u) ]]; then
-  return
-fi
-
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+# set create tmux alias for root with $TMUXCONF as config file
+if [[ $(id -u) -eq 0 ]] && [[ -n ${SUDO_USER} ]]; then
+  if [[ -n ${TMUXCONF} ]] && [[ -f ${TMUXCONF} ]]; then
+    alias tmux="tmux -f ${TMUXCONF}"
+  fi
 fi
 
 # interactive only
 if [[ $- != *i* ]]; then
   return
 else
-
   # bash behaviour
   shopt -s checkwinsize
   shopt -s globstar
@@ -48,18 +50,26 @@ else
   export HISTFILESIZE=100000
   export PROMPT_DIRTRIM=3
 
-  # powerline or multiline
-  PS1_STYLE="multiline"
-
-  # export EDITOR variable
-  if [[ -x /usr/bin/nvim ]]; then
-    export EDITOR=nvim
-  elif [[ -x /usr/bin/vim ]]; then
-    export EDITOR=vim
+  # export USER's PATH
+  # - ensure external scripts are idempotent!
+  if [[ -f ${HOME}/.bash_paths ]]; then
+    . "${HOME}/.bash_paths"
   fi
 
-  if [[ -f "${HOME}/.tmux.conf" ]]; then
-    export TMUXCONF="${HOME}/.tmux.conf"
+  # set KUBECONFIG variable
+  # - ensure external scripts are idempotent!
+  if [[ -f ${HOME}/.bash_kubeconfig ]]; then
+    . "${HOME}/.bash_kubeconfig"
+  fi
+
+  # export HOST variable if empty
+  if [[ -z ${HOST} && -f /etc/hostname ]]; then
+    export HOST=$(</etc/hostname)
+  fi
+
+  # window name if SSH_TTY is present (tmux)
+  if [[ ! -z ${SSH_TTY} && -z ${TMUX} ]]; then
+    printf '\033k%s\033\\' "ssh://${HOST%%.*}"
   fi
 
   # fix missing locales if apply
@@ -69,17 +79,21 @@ else
   if [[ -z $LC_NUMERIC ]]; then        export LC_NUMERIC=sk_SK.UTF-8; fi
   if [[ -z $LC_MEASUREMENT ]]; then    export LC_MEASUREMENT=sk_SK.UTF-8; fi
   if [[ -z $LC_TIME ]]; then           export LC_TIME=sk_SK.UTF-8; fi
-  
-  # export USER's PATH
-  if [[ -f ${HOME}/.bash_paths ]]; then
-    . "${HOME}/.bash_paths"
+
+
+  # export EDITOR variable
+  if [[ -x /usr/bin/nvim ]]; then
+    export EDITOR=nvim
+  elif [[ -x /usr/bin/vim ]]; then
+    export EDITOR=vim
   fi
 
-  # export HOST variable if empty
-  if [[ -z ${HOST} && -f /etc/hostname ]]; then
-    export HOST=$(</etc/hostname)
-  fi
+  ##
+  ## PS1 customization
+  ##
 
+  # powerline or multiline
+  PS1_STYLE="multiline"
   if [[ ! -v e_style['reset_all'] ]]; then
     declare -A e_style
     # bg colors - base
@@ -168,20 +182,5 @@ else
     PS1="${PS1}${UID_PS1_FG} \\$"
     PS1="${PS1}${e_style['reset_all']} "
     export PS1
-  fi
-
-  if [[ ! -z ${SSH_TTY} && -z ${TMUX} ]]; then
-    printf '\033k%s\033\\' "ssh://${HOST%%.*}"
-  fi
-
-  if [[ -f ${HOME}/.bash_kubeconfig ]]; then
-    . "${HOME}/.bash_kubeconfig"
-  fi
-  
-  if [[ -z ${USER} ]]; then
-    # switch to numeric if ${USER} is empty
-    export USER_BASHRC="$(id -u)"
-  else
-    export USER_BASHRC="${USER}"
   fi
 fi
