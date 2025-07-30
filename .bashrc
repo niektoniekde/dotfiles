@@ -89,8 +89,8 @@ fi
 ##
 ## PS1 customization
 ##
-# return if BASH_VERSION is lower than 4
-if [[ ! ${BASH_VERSION:0:1} -ge 4 ]]; then return; fi
+# return if BASH_VERSINFO is lower than 4
+if [[ -z ${BASH_VERSINFO} ]] || [[ ${BASH_VERSINFO} -le 4 ]]; then return; fi
 # powerline or multiline
 PS1_STYLE="multiline"
 declare -A e_style
