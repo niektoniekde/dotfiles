@@ -17,9 +17,11 @@
     "clock#showdate",
     "clock#showtime",
     "custom/arr_ac2_ac1",
-    "hyprland/workspaces",
+    "niri/workspaces",
+//    "hyprland/workspaces",
     "custom/arr_ac1_ac3",
-    "hyprland/window",
+//    "hyprland/window",
+    "niri/window",
     "custom/arr_ac3_bg"
   ],
   "modules-center": [],
@@ -43,15 +45,22 @@
     "custom/arl_ac3_bg",
     "tray"
   ],
-  "hyprland/workspaces": {
-    "format": " {id} ",
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1"
+  "niri/workspaces": {
+    "format": " {value} "
   },
-  "hyprland/window": {
-    "separate-outputs": true,
-    "expand": true
+  "niri/window": {
+    "format": " {title} "
   },
+//  "hyprland/workspaces": {
+//    "format": " {id} ",
+//    "on-scroll-up": "hyprctl dispatch workspace e+1",
+//    "on-scroll-down": "hyprctl dispatch workspace e-1"
+//  },
+  
+//  "hyprland/window": {
+//    "separate-outputs": true,
+//    "expand": true
+//  },
   "tray": {
       "icon-size": 16,
       "spacing": 2
