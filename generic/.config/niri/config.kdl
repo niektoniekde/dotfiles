@@ -267,7 +267,8 @@ layout {
 spawn-at-startup "waybar"
 spawn-sh-at-startup "flatpak run com.nextcloud.desktopclient.nextcloud"
 spawn-sh-at-startup "swaybg -m solid_color -c 1e1e2e"
-
+// }}}
+// {{{ MISC
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 // 
@@ -290,6 +291,16 @@ screenshot-path "~/Pictures/Screenshots/scrshot__%Y%m%d_%H%M%S.png"
 
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+cursor {
+    xcursor-theme "volantes_cursors"
+}
 // }}}
 // {{{ ANIMATIONS
 // Animation settings.
