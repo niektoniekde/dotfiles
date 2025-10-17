@@ -268,8 +268,9 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
-spawn-sh-at-startup "flatpak run com.nextcloud.desktopclient.nextcloud"
 spawn-sh-at-startup "swaybg -m solid_color -c 1e1e2e"
+spawn-sh-at-startup "flatpak run com.nextcloud.desktopclient.nextcloud"
+spawn-sh-at-startup "flatpak run org.keepassxc.KeePassXC --minimized"
 // }}}
 // {{{ MISC
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
@@ -279,6 +280,13 @@ hotkey-overlay {
   // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
   skip-at-startup
 }
+
+// Note that niri will already automatically turn the internal laptop monitor
+// on and off in accordance with the laptop lid.
+// switch-events {
+//  lid-close { spawn "notify-send" "The laptop lid is closed!"; }
+//  lid-open  { spawn "notify-send" "The laptop lid is open!"; }
+// }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -382,6 +390,7 @@ binds {
     Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn-sh "kitty -1 --hold bash -l -c tmux"; }
     Mod+R hotkey-overlay-title="Run an Application: rofi" { spawn-sh "source ~/.bash_paths && rofi -show drun"; }
     Mod+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
+    Mod+K { spawn "flatpak" "run" "org.keepassxc.KeePassXC"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
