@@ -88,6 +88,9 @@ input {
 
 // since next-release
 // include "~/.local/etc/niri/outputs.kdl"
+output "eDP-1" {
+  scale 1.0
+}
 
 // }}}
 // {{{ LAYOUT
