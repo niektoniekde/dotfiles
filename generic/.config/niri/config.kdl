@@ -456,6 +456,8 @@ binds {
     Mod+Shift+Ctrl+S    { move-column-to-monitor-down; }
     Mod+Shift+Ctrl+D    { move-column-to-monitor-right; }
 
+    Mod+Ctrl+Tab        { focus-monitor-next; }
+
     // Alternatively, there are commands to move just a single window:
     // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
     // ...
