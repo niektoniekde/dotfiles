@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 vim.opt.mouse = ""
-vim.g.netrw_liststyle = 3
+vim.g.netrw_liststyle = 4
 
 if not package.loaded['netrw'] ~= nill then
   vim.api.nvim_set_keymap('n', '<leader>F', ':Ex %:p:h<CR>', { noremap = true})
