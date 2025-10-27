@@ -429,7 +429,7 @@ binds {
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
     Mod+Tab repeat=false { toggle-overview; }
-    Mod+C repeat=false { close-window; }
+    Mod+X repeat=false { close-window; }
 
     Mod+A        { focus-column-left; }
     Mod+D        { focus-column-right; }
@@ -578,10 +578,10 @@ binds {
     // Makes the column "fill the rest of the space".
     Mod+Ctrl+F { expand-column-to-available-width; }
 
-    //Mod+C { center-column; }
+    Mod+C { center-column; }
 
     // Center all fully visible columns on screen.
-    //Mod+Ctrl+C { center-visible-columns; }
+    Mod+Ctrl+C { center-visible-columns; }
 
     // Finer width adjustments.
     // This command can also:
