@@ -267,10 +267,11 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "waybar"
-spawn-sh-at-startup "swaybg -m solid_color -c 1e1e2e"
-spawn-sh-at-startup "flatpak run com.nextcloud.desktopclient.nextcloud"
-spawn-sh-at-startup "flatpak run org.keepassxc.KeePassXC --minimized"
+//spawn-at-startup "waybar"
+//spawn-sh-at-startup "swaybg -m solid_color -c 1e1e2e"
+//spawn-sh-at-startup "flatpak run com.nextcloud.desktopclient.nextcloud"
+//spawn-sh-at-startup "flatpak run org.keepassxc.KeePassXC --minimized"
+
 // }}}
 // {{{ MISC
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:

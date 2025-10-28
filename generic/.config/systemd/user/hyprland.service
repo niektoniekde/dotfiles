@@ -1,0 +1,15 @@
+[Unit]
+Description=hyprland user session
+Requires=dbus.service
+ConditionUser=!root
+
+[Service]
+Type=simple
+ExecStartPre=test -f ${HOME}/.config/hypr/hyprland.conf
+ExecStart=/usr/bin/hyprland
+Restart=on-failure
+RestartSec=30s
+Slice=session.slice
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,14 @@
+[Unit]
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+AssertPathExists=/usr/bin/flatpak
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/flatpak run org.keepassxc.KeePassXC --minimized
+ExecStop=/usr/bin/flatpak kill org.keepassxc.KeePassXC
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

@@ -1,0 +1,13 @@
+[Unit]
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+AssertPathExists=/usr/bin/flatpak
+
+[Service]
+ExecStart=/usr/bin/flatpak run com.nextcloud.desktopclient.nextcloud
+ExecStart=/usr/bin/flatpak kill com.nextcloud.desktopclient.nextcloud
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target
