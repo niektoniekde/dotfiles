@@ -6,7 +6,7 @@ AssertPathExists=/usr/bin/flatpak
 
 [Service]
 ExecStart=/usr/bin/flatpak run com.nextcloud.desktopclient.nextcloud
-ExecStart=/usr/bin/flatpak kill com.nextcloud.desktopclient.nextcloud
+ExecStop=/usr/bin/flatpak kill com.nextcloud.desktopclient.nextcloud
 Restart=on-failure
 
 [Install]
