@@ -1,10 +1,19 @@
 vim.g.mapleader = " "
 vim.opt.mouse = ""
-vim.g.netrw_liststyle = 4
 
-if not package.loaded['netrw'] ~= nill then
-  vim.api.nvim_set_keymap('n', '<leader>F', ':Ex %:p:h<CR>', { noremap = true})
---vim.api.nvim_set_keymap('n', '<leader>F', ':Ex %:p:h<CR>', { noremap = true})
+if not package.loaded['neotree'] ~= nill then
+  vim.g.loaded_netrw=1
+  vim.g.loaded_netrwPlugin=1
+  vim.api.nvim_set_keymap('n', '<leader>E', ':Neotree position=float source=last reveal_force_cwd=true<CR>', { noremap = true})
+  vim.api.nvim_set_keymap('n', '<leader>F', ':Neotree position=float source=filesystem reveal_force_cwd=true<CR>', { noremap = true})
+  vim.api.nvim_set_keymap('n', '<leader>ef', ':Neotree position=float source=filesystem reveal_force_cwd=true<CR>', { noremap = true})
+  vim.api.nvim_set_keymap('n', '<leader>eb', ':Neotree position=float source=buffers reveal_force_cwd=true<CR>', { noremap = true})
+  vim.api.nvim_set_keymap('n', '<leader>eg', ':Neotree position=float source=git_status reveal_force_cwd=true<CR>', { noremap = true})
+else
+  if not package.loaded['netrw'] ~= nill then
+    vim.g.netrw_liststyle = 4
+    vim.api.nvim_set_keymap('n', '<leader>F', ':Ex %:p:h<CR>', { noremap = true})
+  end
 end
 
 if not package.loaded['telescope'] ~= nill then
