@@ -30,6 +30,11 @@ if not package.loaded['fugitive'] ~= nill then
   vim.api.nvim_set_keymap('n', '<leader>gb', ':Git blame<CR>', { noremap = true })
 end
 
+if not package.loaded['indentmini'] ~= nill then
+  vim.cmd.highlight('IndentLine guifg=#2e2e3e')
+  vim.cmd.highlight('IndentLineCurrent guifg=#6e6e7e')
+end
+
 vim.cmd[[
 " indentation
 set expandtab
