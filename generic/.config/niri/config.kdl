@@ -89,12 +89,6 @@ input {
 // since next-release
 include "outputs_local.kdl"
 
-output "DP-1" {
-  mode "3440x1440@170"
-  scale 1.0
-  variable-refresh-rate
-}
-
 // }}}
 // {{{ LAYOUT
 // Settings that influence how windows are positioned and sized.
