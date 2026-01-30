@@ -54,7 +54,7 @@ input {
     mouse {
         // off
         // natural-scroll
-        // accel-speed 0.2
+        accel-speed 0.0
         // accel-profile "flat"
         // scroll-method "no-scroll"
     }
@@ -90,6 +90,12 @@ input {
 // include "~/.local/etc/niri/outputs.kdl"
 output "eDP-1" {
   scale 1.0
+}
+
+output "DP-1" {
+  mode "3440x1440@170"
+  scale 1.0
+  variable-refresh-rate
 }
 
 // }}}
