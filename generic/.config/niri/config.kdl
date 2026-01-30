@@ -87,10 +87,7 @@ input {
 // Remember to uncomment the node by removing "/-"!
 
 // since next-release
-// include "~/.local/etc/niri/outputs.kdl"
-output "eDP-1" {
-  scale 1.0
-}
+include "outputs_local.kdl"
 
 output "DP-1" {
   mode "3440x1440@170"
