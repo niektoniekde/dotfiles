@@ -87,7 +87,8 @@ input {
 // Remember to uncomment the node by removing "/-"!
 
 // since next-release
-// include "~/.local/etc/niri/outputs.kdl"
+include "outputs_local.kdl"
+
 output "eDP-1" {
   scale 1.0
 }
