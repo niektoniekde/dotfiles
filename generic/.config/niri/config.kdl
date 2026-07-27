@@ -17,7 +17,7 @@ input {
     keyboard {
         xkb {
           layout "us,sk"
-          options "grp:alt_shift_toggle,caps:ctrl_modifier"
+          options "grp:alt_shift_toggle,caps:none"
             // You can set rules, model, layout, variant and options.
             // For more information, see xkeyboard-config(7).
 
