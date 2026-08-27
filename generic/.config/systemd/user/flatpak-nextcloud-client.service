@@ -5,6 +5,7 @@ Requisite=graphical-session.target
 AssertPathExists=/usr/bin/flatpak
 
 [Service]
+Environment="QT_QPA_PLATFORMTHEME=kde"
 ExecStart=/usr/bin/flatpak run com.nextcloud.desktopclient.nextcloud
 ExecStop=/usr/bin/flatpak kill com.nextcloud.desktopclient.nextcloud
 Restart=on-failure
