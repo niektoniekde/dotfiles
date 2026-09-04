@@ -17,7 +17,10 @@ else
 end
 
 if not package.loaded['telescope'] ~= nill then
-  vim.api.nvim_set_keymap('n', '<leader>B', ':Telescope buffers<CR>', { noremap = true})
+  vim.api.nvim_set_keymap('n', '<leader>tb', ':Telescope buffers<CR>', { noremap = true})
+  vim.api.nvim_set_keymap('n', '<leader><tab>', ':Telescope buffers<CR>', { noremap = true})
+  vim.api.nvim_set_keymap('n', '<leader>tg', ':Telescope live_grep<CR>', { noremap = true})
+  vim.api.nvim_set_keymap('n', '<leader>tf', ':Telescope find_files<CR>', { noremap = true})
 else
   vim.api.nvim_set_keymap('n', '<leader>B', ':buffers<CR>', { noremap = true})
 end
