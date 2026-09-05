@@ -400,7 +400,7 @@ binds {
     Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn-sh "kitty -1 --hold bash -l -c tmux"; }
     //Mod+R hotkey-overlay-title="Run an Application: rofi" { spawn-sh "source ~/.bash_paths && rofi -show drun"; }
     Mod+R hotkey-overlay-title="Run an Application: noctalia shell" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Mod+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
+    Mod+L hotkey-overlay-title="Lock the Screen: noctalia shell" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
     Mod+K { spawn "flatpak" "run" "org.keepassxc.KeePassXC"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
