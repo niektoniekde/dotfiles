@@ -1,41 +1,25 @@
 vim.g.mapleader = " "
 vim.opt.mouse = ""
+vim.opt.cursorline = true
+vim.opt.foldtext = [[getline(v:foldstart) . ' ... ' . (v:foldend - v:foldstart + 1) . ' lines folded ']]
+vim.opt.fillchars:append({ fold = ' ' })
 
-if not package.loaded['neotree'] ~= nill then
-  vim.g.loaded_netrw=1
-  vim.g.loaded_netrwPlugin=1
-  vim.api.nvim_set_keymap('n', '<leader>E', ':Neotree position=float source=last reveal_force_cwd=true<CR>', { noremap = true})
-  vim.api.nvim_set_keymap('n', '<leader>F', ':Neotree position=float source=filesystem reveal_force_cwd=true<CR>', { noremap = true})
-  vim.api.nvim_set_keymap('n', '<leader>ef', ':Neotree position=float source=filesystem reveal_force_cwd=true<CR>', { noremap = true})
-  vim.api.nvim_set_keymap('n', '<leader>eb', ':Neotree position=float source=buffers reveal_force_cwd=true<CR>', { noremap = true})
-  vim.api.nvim_set_keymap('n', '<leader>eg', ':Neotree position=float source=git_status reveal_force_cwd=true<CR>', { noremap = true})
-else
-  if not package.loaded['netrw'] ~= nill then
-    vim.g.netrw_liststyle = 4
-    vim.api.nvim_set_keymap('n', '<leader>F', ':Ex %:p:h<CR>', { noremap = true})
-  end
-end
+-- generic keymaps (not related to plugins)
+vim.keymap.set({ 'n', 'x' }, '<C-k>',  '<C-u>')  -- half page up
+vim.keymap.set({ 'n', 'x' }, '<C-j>',  '<C-d>')  -- half page down
 
-if not package.loaded['telescope'] ~= nill then
-  vim.api.nvim_set_keymap('n', '<leader>tb', ':Telescope buffers<CR>', { noremap = true})
-  vim.api.nvim_set_keymap('n', '<leader><tab>', ':Telescope buffers<CR>', { noremap = true})
-  vim.api.nvim_set_keymap('n', '<leader>tg', ':Telescope live_grep<CR>', { noremap = true})
-  vim.api.nvim_set_keymap('n', '<leader>tf', ':Telescope find_files<CR>', { noremap = true})
-else
-  vim.api.nvim_set_keymap('n', '<leader>B', ':buffers<CR>', { noremap = true})
-end
-
-if not package.loaded['fugitive'] ~= nill then
-  vim.api.nvim_set_keymap('n', '<leader>ga', ':Git add %<CR>', { noremap = true})
-  vim.api.nvim_set_keymap('n', '<leader>gc', ':Git commit<CR>', { noremap = true})
-  vim.api.nvim_set_keymap('n', '<leader>gp', ':Git push<CR>', { noremap = true})
-  vim.api.nvim_set_keymap('n', '<leader>gs', ':Git status<CR>', { noremap = true })
-  vim.api.nvim_set_keymap('n', '<leader>gb', ':Git blame<CR>', { noremap = true })
-end
-
-if not package.loaded['indentmini'] ~= nill then
-  vim.cmd.highlight('IndentLine guifg=#2e2e3e')
-  vim.cmd.highlight('IndentLineCurrent guifg=#6e6e7e')
+-- tree-sitter folding where a parser exists; markers in modelines still override
+if vim.fn.has('nvim-0.10') == 1 then
+  vim.treesitter.language.register('yaml', 'yaml.ansible')
+  vim.api.nvim_create_autocmd('FileType', {
+    group = vim.api.nvim_create_augroup('ts_setup', { clear = true }),
+    callback = function(ev)
+      if not pcall(vim.treesitter.start, ev.buf) then return end
+      vim.opt_local.foldmethod = 'expr'
+      vim.opt_local.foldexpr   = 'v:lua.vim.treesitter.foldexpr()'
+      vim.opt_local.foldlevel  = 99
+    end,
+  })
 end
 
 vim.cmd[[
@@ -48,10 +32,6 @@ set softtabstop=2
 " numbers
 set number
 set relativenumber
-
-" folding
-"set foldmethod=indent
-"set foldnestmax=3
 
 " wildmenu
 set wildmenu
@@ -78,5 +58,6 @@ nnoremap <silent> <Leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1
 
 local config_local = vim.fn.expand("~/.local/etc/nvim/local.lua")
 if vim.fn.filereadable(config_local) == 1 then
-    dofile(config_local)
+  local ok, err = pcall(dofile, config_local)
+  if not ok then vim.notify("local.lua: " .. err, vim.log.levels.ERROR) end
 end
