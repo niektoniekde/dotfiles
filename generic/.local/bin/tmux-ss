@@ -2,8 +2,13 @@
 set -euo pipefail
 
 script_name="$(basename ${0})"
-declare sessions_file="${HOME}/.local/etc/tmux-ss/sessions.list"
 declare -A sessions
+declare -a sessions_list=(
+  "${HOME}/.local/etc/tmux-ss/local.list"
+  "${HOME}/.local/etc/tmux-ss/personal.list"
+  "${HOME}/.local/etc/tmux-ss/generic.list"
+)
+declare -i sessions_list_length="${#sessions_list[@]}"
 
 __session_parse() {
   while read -r session
@@ -52,7 +57,10 @@ __call_tmux() {
 
 __session_parse "$(
   tmux ls -F '#{session_name}=#{session_path}' 2>/dev/null || echo ""
-  cat "${sessions_file}" 2>/dev/null || echo ""
+  for ((i=0; i<${sessions_list_length}; i++))
+  do
+    cat "${sessions_list[$i]}" 2>/dev/null || echo ""
+  done
 )"
 
 __call_tmux "$(
