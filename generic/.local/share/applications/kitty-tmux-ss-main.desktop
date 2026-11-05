@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Kitty - Tmux Session - main
+Exec=kitty -1 bash -l -c 'tmux new-session -As main'
+Terminal=false
+Type=Application
+StartupNotify=false
+Icon=kitty
