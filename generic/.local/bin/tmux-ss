@@ -2,6 +2,7 @@
 set -euo pipefail
 
 script_name="$(basename ${0})"
+declare ch_nl=$'\n'
 declare -A sessions
 declare -a sessions_list=(
   "${HOME}/.local/etc/tmux-ss/local.list"
@@ -64,10 +65,17 @@ __session_parse "$(
 )"
 
 __call_tmux "$(
+  declare sessions_live="$(
+    tmux ls -F '#{session_name}' 2>/dev/null || echo ""
+  )"
+
   for key in "${!sessions[@]}"
   do
-    printf "%s\t%s\n" "${key}" "${sessions[$key]}"
-  done | sort | fzf --delimiter='\t' --accept-nth=1
+    is_live="  "
+    is_live_regex="(^|${ch_nl})${key}($|${ch_nl})"
+    [[ ${sessions_live} =~ $is_live_regex ]] && is_live="=>"
+    printf "%s\t%s\t%s\n" "${is_live}" "${key}" "${sessions[$key]}"
+  done | column -t -s $'\t' | fzf -e --delimiter='\t' --accept-nth=2 --tabstop=2
 )"
 
 exit
