@@ -69,13 +69,23 @@ __call_tmux "$(
     tmux ls -F '#{session_name}' 2>/dev/null || echo ""
   )"
 
+  declare -i max_length=0
   for key in "${!sessions[@]}"
   do
-    is_live="  "
+    (( ${#key} > max_length )) && max_length=${#key}
+    max_length=$((max_length+1))
+  done
+
+  for key in "${!sessions[@]}"
+  do
+    declare -i key_length=${#key}
+    declare -i align_length=$((max_length-key_length))
+    aligment=$(printf '%*s' ${align_length} " ")
+    is_live="-"
     is_live_regex="(^|${ch_nl})${key}($|${ch_nl})"
-    [[ ${sessions_live} =~ $is_live_regex ]] && is_live="=>"
-    printf "%s\t%s\t%s\n" "${is_live}" "${key}" "${sessions[$key]}"
-  done | column -t -s $'\t' | fzf -e --delimiter='\t' --accept-nth=2 --tabstop=2
+    [[ ${sessions_live} =~ $is_live_regex ]] && is_live="+"
+    printf "%s\t%s\t%s%s\n" "${is_live}" "${key}" "${aligment}" "${sessions[$key]}"
+  done | fzf -e --delimiter='\t' --tabstop=1 --accept-nth=2
 )"
 
 exit
